@@ -1,30 +1,87 @@
 import random
 import time
 
+health = 50
+money = 0
+
 
 # Greetings and start
-def gameStart():
+def gameStart(value):
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n***Welcome to Viking Journey!*** \n\nVersion Alpha 0.1 By ToonLunk\n")
-    print("This is one trial of many.")
-    time.sleep(3)
-    cross_a_river()
+    print("This is one trial of many.\n\n###Enter 'help' at any time to view the instructions.###")
+    keepGoing()
+    level_chooser = input("\n\nChoose a level. \n\n(Levels: River) \n\n")
+    return level_chooser
+
 
 def gameOver():
     beginAgain = input("\n\nYou died! Continue? Y or N  ")
     if beginAgain.lower() == "y" or beginAgain.lower() == "yes":
-        gameStart()
+        global health
+        health = 50
+        global money
+        money = 0
+        gameStart(0)
     else:
-        exit()
+        exit(104)
+
 
 def again():
     again = input("\nAgain? Press Y or N ")
     if again.lower() == "y" or "yes":
-        gameStart()
+        gameStart(0)
+    else:
+        exit(103)
 
+
+# The instructions manual
+def manual():
+    page1_manual = "\n##Tip: Press enter to continue along your journey when you see '...'##\n" \
+                   "***************************************************************"
+    page2_manual = "##Tip: Enter 'Health' at any time to view how much health you have left.##\n" \
+                   "***************************************************************"
+    page3_manual = "##Tip: Enter 'Wallet' to view how much gold you have in your wallet.##\n" \
+                   "**************************************************************"
+    pageSelection_manual = input("Welcome to the manual. Press enter the go to the next page. ")
+    print(page1_manual, "\n\nPress enter to go to the next page, or 'exit' to return to the game.")
+    nextPage_1 = input()
+    if nextPage_1.lower() == "exit":
+        return
+    if nextPage_1.lower() == "":
+        print(page2_manual, "\n\nPress enter to go to the next page, or 'exit' to return to the game.")
+        nextPage_2 = input()
+        if nextPage_2.lower() == "":
+            print(page3_manual)
+            input("...")
+            return
+
+
+def wallet():
+    print("Total money in wallet: ", money)
+
+
+# Keep going is the 3 dots (...) where the user presses enter to continue. The purpose is so that the reader
+# Can take their time reading. Here, they can also do things like check their health and read the instructions.
 def keepGoing():
-    input("...")
-    return
-
+    if health == 0:
+        print("Your health has reached 0. You are dead!")
+        input("...")
+        gameOver()
+    else:
+        advance = input("...")
+        if advance.lower() == "health":
+            print(health)
+            keepGoing()
+        if advance.lower() == "help":
+            manual()
+            keepGoing()
+        if advance.lower() == "exit":
+            exit()
+        if advance.lower() == "wallet":
+            wallet()
+            keepGoing()
+        else:
+            return
 
 
 # Swimming through the river conditions
@@ -63,7 +120,7 @@ def success_River():
     keepGoing()
     print("\nThe beasts sensed your testosterone and left you alone. The cold river stood no chance against your "
           "flaming "
-        "heart. \n\nYou made it!")
+          "heart. \n\nYou made it!")
     time.sleep(5)
     again()
 
@@ -90,8 +147,9 @@ def failedToDragon_aroundRiver():
 
 
 def failedToStarving_aroundRiver():
-    print("\n\nYou know going around the river will take much longer, but decide to do it anyways. You pack your sword, "
-          "shield, and ale, and head towards the east, along the embankment.")
+    print(
+        "\n\nYou know going around the river will take much longer, but decide to do it anyways. You pack your sword, "
+        "shield, and ale, and head towards the east, along the embankment.")
     keepGoing()
     print("\n\nYou take the last sip of your delicious ale that your uncle's servant crafted. You're hungry.")
     keepGoing()
@@ -102,7 +160,7 @@ def failedToStarving_aroundRiver():
     print("\n\nYou killed the rabbit, but lost the river along the way.")
     keepGoing()
     print("\n\nYou also remember that you're allergic to rabbit meat, and starve to death.")
-    time.sleep(3)
+    keepGoing()
     gameOver()
 
 
@@ -132,10 +190,28 @@ def cross_a_river():
     print("\nYou come across a large river. What do you do?\n")
     print("1. Try to swim across it")
     print("2. Try to go around it")
+    print("3. Fish for a while, and sell it to the nearby fisherman")
     choice = int(input("Your choice: "))
     if choice == 1:
         random.choice(swim_across_river)()
     if choice == 2:
         random.choice(go_around_river)()
+    if choice == 3:
+        print("You fish for a few hours, and accidentally cut yourself with the line. You catch something and sell it"
+              " to the fisherman for 5 coins, but was it worth it?")
+        global health
+        health = health - 15
+        global money
+        money = money + 5
+        keepGoing()
+        cross_a_river()
+    else:
+        exit(102)
 
-gameStart()
+
+# This is where the game begins
+begin = gameStart(0)
+if begin == "river":
+    cross_a_river()
+else:
+    exit(101)
