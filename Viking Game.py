@@ -121,7 +121,7 @@ def success_River():
     print("\nThe beasts sensed your testosterone and left you alone. The cold river stood no chance against your "
           "flaming "
           "heart. \n\nYou made it!")
-    time.sleep(5)
+    keepGoing()
     again()
 
 
@@ -142,7 +142,7 @@ def failedToDragon_aroundRiver():
     print("\nYou soon realize your mistake, as the smoke was coming from an evil Dragon!")
     keepGoing()
     print("\nYou fought brave, but the Dragon had babies, and took no chances. You are slain!")
-    time.sleep(5)
+    keepGoing()
     gameOver()
 
 
@@ -154,8 +154,6 @@ def failedToStarving_aroundRiver():
     print("\n\nYou take the last sip of your delicious ale that your uncle's servant crafted. You're hungry.")
     keepGoing()
     print("\n\nIt's been a few days now, and somewhere along the way, you chased a rabbit in desperate need of food.")
-    keepGoing()
-    print("\n\nYou killed the rabbit, but lost the river along the way.")
     keepGoing()
     print("\n\nYou killed the rabbit, but lost the river along the way.")
     keepGoing()
