@@ -1,0 +1,27 @@
+Changelog:
+Added "health" variable
+Added "money" variable
+Added "help" option in "..." menu (keepGoing())
+Added "health" option in "..." menu
+Added "wallet" option in "..." menu
+Added avaliability for new levels by removing the dependancy of gameStart() on cross_a_river
+Added option 3 to cross_a_river to test out adding to/taking from global variables like health
+Added a checker that runs every time you see "..." so that if your health drops below 0, you die immediately
+Added exit codes, references are down below
+Added an instruction manual
+Removed most time.sleep references in favor of "..." menu
+Removed most dependancies of functions on other functions (all functions can now be used freely except keepGoing(), will be added soon
+
+exit codes: 
+
+#101
+where: when you don't choose a level; line 215
+
+#102
+where: if you fail to make a valid choice; line 209
+
+#103
+where: if you win and don't enter "y" or "yes", line 34
+
+#104
+where: if you die and don't enter either "y" or "yes" line 26
