@@ -6,7 +6,7 @@ Version: Alpha 0.1.2:
   Fixed issue where the text repeated itself in "starvingAround_River" scenario
   Fixed issue where after getting the game over screen, game would crash even if you select "yes"
   Fixed issue where after completing the game and it asks "Again?" when you get to the level chooser, it crashes
-
+Note: villageAfter_River does not have any dependancy on crossing_the_river and the text could be reworded (only one line) to fit any situation.
 Version: Alpha 0.1.1:
 
   Added "health" variable
