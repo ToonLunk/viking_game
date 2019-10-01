@@ -1,18 +1,34 @@
 Changelog:
-Added "health" variable
-Added "money" variable
-Added "help" option in "..." menu (keepGoing())
-Added "health" option in "..." menu
-Added "wallet" option in "..." menu
-Added avaliability for new levels by removing the dependancy of gameStart() on cross_a_river
-Added option 3 to cross_a_river to test out adding to/taking from global variables like health
-Added a checker that runs every time you see "..." so that if your health drops below 0, you die immediately
-Added exit codes, references are down below
-Added an instruction manual
-Removed most time.sleep references in favor of "..." menu
-Removed most dependancies of functions on other functions (all functions can now be used freely except keepGoing(), will be added soon
 
-exit codes: 
+Version: Alpha 0.1.2:
+  
+  Added new level after completing River: "villiage after river" func. name: villiageAfter_River
+  Fixed issue where the text repeated itself in "starvingAround_River" scenario
+  Fixed issue where after getting the game over screen, game would crash even if you select "yes"
+  Fixed issue where after completing the game and it asks "Again?" when you get to the level chooser, it crashes
+
+Version: Alpha 0.1.1:
+
+  Added "health" variable
+  Added "money" variable
+  Added "help" option in "..." menu (keepGoing())
+  Added "health" option in "..." menu
+  Added "wallet" option in "..." menu
+  Added avaliability for new levels by removing the dependancy of gameStart() on cross_a_river
+  Added option 3 to cross_a_river to test out adding to/taking from global variables like health
+  Added a checker that runs every time you see "..." so that if your health drops below 0, you die immediately
+  Added exit codes, references are down below
+  Added an instruction manual
+  Removed most time.sleep references in favor of "..." menu
+  Removed most dependancies of functions on other functions (all functions can now be used freely except keepGoing(), will be added soon
+
+Version Alpha 0.1:
+  
+  Created game
+
+
+
+Exit codes: 
 
 #101
 where: when you don't choose a level; line 215
